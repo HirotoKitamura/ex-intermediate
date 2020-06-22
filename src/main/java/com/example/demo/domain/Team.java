@@ -31,14 +31,16 @@ public class Team {
 	private Date inauguration;
 	/**
 	 * 歴史に関する記述.
+	 * 
+	 * 1行ごとに配列に入れる
 	 */
-	private String history;
+	private String[] history;
 
 	public Team() {
 	}
 
 	public Team(Integer id, String leagueName, String teamName, String headquarters, Date inauguration,
-			String history) {
+			String[] history) {
 		super();
 		this.id = id;
 		this.leagueName = leagueName;
@@ -88,11 +90,11 @@ public class Team {
 		this.inauguration = inauguration;
 	}
 
-	public String getHistory() {
+	public String[] getHistory() {
 		return history;
 	}
 
-	public void setHistory(String history) {
+	public void setHistory(String[] history) {
 		this.history = history;
 	}
 

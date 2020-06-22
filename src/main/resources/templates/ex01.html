@@ -8,7 +8,7 @@
 <body>
 <h1>野球チーム一覧</h1>
 <div  th:each="team:${teamList}">
-<a th:href="'ex01/detail?id='+${team.id}" th:text="${team.teamName}">千葉ロッテマリーンズ</a>
+<a th:href="@{'/ex01/detail?id='+${team.id}}" th:text="${team.teamName}">千葉ロッテマリーンズ</a>
 </div>
 </body>
 </html>

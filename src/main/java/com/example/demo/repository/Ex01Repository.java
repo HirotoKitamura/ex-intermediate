@@ -30,7 +30,7 @@ public class Ex01Repository {
 		Date inauguration = Date
 				.valueOf(rs.getString("inauguration").replace("年", "-").replace("月", "-").replace("日", ""));
 		return new Team(rs.getInt("id"), rs.getString("league_name"), rs.getString("team_name"),
-				rs.getString("headquarters"), inauguration, rs.getString("history"));
+				rs.getString("headquarters"), inauguration, rs.getString("history").split("\n"));
 	};
 
 	/**

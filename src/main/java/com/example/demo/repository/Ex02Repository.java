@@ -31,15 +31,26 @@ public class Ex02Repository {
 	};
 
 	/**
-	 * ある価格以下のホテルを検索.
+	 * ある価格以下のホテルを価格の降順で検索.
 	 * 
 	 * @param price 最高価格
 	 * @return 検索結果
 	 */
 	public List<Hotel> searchByLessThanPrice(Integer price) {
 		String sql = "SELECT id, area_name, hotel_name, address, nearest_station, price, parking "
-				+ "FROM hotels WHERE price <= :price;";
+				+ "FROM hotels WHERE price <= :price ORDER BY price DESC;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("price", price);
 		return template.query(sql, param, HOTEL_ROWMAPPER);
+	}
+
+	/**
+	 * 全ホテルを価格の降順で検索.
+	 * 
+	 * @return 検索結果
+	 */
+	public List<Hotel> findAll() {
+		String sql = "SELECT id, area_name, hotel_name, address, nearest_station, price, parking "
+				+ "FROM hotels ORDER BY price DESC;";
+		return template.query(sql, HOTEL_ROWMAPPER);
 	}
 }

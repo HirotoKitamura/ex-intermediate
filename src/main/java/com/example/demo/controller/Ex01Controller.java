@@ -43,7 +43,7 @@ class Ex01Controller {
 	public String detail(Integer id, Model model) {
 		Team team = service.showDetail(id);
 		if (team == null) {
-			return "error";
+			return "errors";
 		}
 		model.addAttribute("team", team);
 		return "ex01-detail";

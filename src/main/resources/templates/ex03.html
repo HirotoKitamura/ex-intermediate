@@ -10,7 +10,7 @@
 <form th:action="@{/ex03/result}" th:object="${clothForm}" method="post">
 <div id="form">
 <div id="gender">
-<input id="man" type="radio" name="gender" value="0" th:checked="${gender==0 || gender==null}"><label for="man">Man</label><br>
+<input id="man" type="radio" name="gender" value="0" th:checked="${gender!=1}"><label for="man">Man</label><br>
 <input id="woman" type="radio" name="gender" value="1" th:checked="${gender==1}"><label for="woman">Woman</label><br>
 </div>
 <select name="color" th:field="*{color}">

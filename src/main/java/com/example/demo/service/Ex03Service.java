@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,16 +26,10 @@ public class Ex03Service {
 	 * 
 	 * @param color  色
 	 * @param gender 性別 男性が0で女性が1
-	 * @return 検索結果のリストとエラーが入ったMap
+	 * @return 検索結果のリスト
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Map searchByColorAndGender(String color, Integer gender) {
-		Map map = new HashMap<>();
+	public List<Cloth> searchByColorAndGender(String color, Integer gender) {
 		List<Cloth> clothList = repository.findByColorAndGender(color, gender);
-		map.put("clothList", clothList);
-		if (clothList.size() == 0) {
-			map.put("errors", "検索結果が1件もありません");
-		}
-		return map;
+		return clothList;
 	}
 }

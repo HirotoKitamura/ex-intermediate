@@ -10,14 +10,11 @@
 <form th:action="@{/ex03/result}" th:object="${clothForm}" method="post">
 <div id="form">
 <div id="gender">
-<input id="man" type="radio" name="gender" value="0" th:checked="${gender!=1}"><label for="man">Man</label><br>
-<input id="woman" type="radio" name="gender" value="1" th:checked="${gender==1}"><label for="woman">Woman</label><br>
+<input id="man" type="radio" name="gender" value="0" th:field="*{gender}"><label for="man">Man</label><br>
+<input id="woman" type="radio" name="gender" value="1" th:field="*{gender}"><label for="woman">Woman</label><br>
 </div>
 <select name="color" th:field="*{color}">
-<option value="赤">赤</option>
-<option value="青">青</option>
-<option value="白">白</option>
-<option value="黄">黄</option>
+<option th:each="color:${application.colors}" th:value="${color}" th:text="${color.name}"></option>
 </select><br>
 </div>
 <button id="button">検索</button>

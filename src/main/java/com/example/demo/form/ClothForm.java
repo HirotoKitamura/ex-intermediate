@@ -1,5 +1,7 @@
 package com.example.demo.form;
 
+import com.example.demo.constant.Colors;
+
 /**
  * 衣服のフォーム.
  * 
@@ -10,7 +12,7 @@ public class ClothForm {
 	/**
 	 * 色.
 	 */
-	private String color;
+	private Colors color;
 	/**
 	 * 性別.
 	 * 
@@ -18,11 +20,11 @@ public class ClothForm {
 	 */
 	private Integer gender;
 
-	public String getColor() {
+	public Colors getColor() {
 		return color;
 	}
 
-	public void setColor(String color) {
+	public void setColor(Colors color) {
 		this.color = color;
 	}
 

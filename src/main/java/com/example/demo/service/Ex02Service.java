@@ -24,19 +24,16 @@ public class Ex02Service {
 	/**
 	 * 指定の価格以下のホテルを価格の降順で検索.
 	 * 
+	 * 指定価格がnullだった場合は全ホテルを価格降順で検索
+	 * 
 	 * @param price 指定価格
 	 * @return 検索結果
 	 */
-	public List<Hotel> searchByLessThanPrice(Integer price) {
-		return repository.searchByLessThanPrice(price);
-	}
-
-	/**
-	 * 全ホテルを価格の降順で検索.
-	 * 
-	 * @return 検索結果
-	 */
-	public List<Hotel> showAll() {
-		return repository.findAll();
+	public List<Hotel> searchByLessThanPrice(String price) {
+		if (price.equals("")) {
+			return repository.findAll();
+		} else {
+			return repository.searchByLessThanPrice(Integer.parseInt(price));
+		}
 	}
 }

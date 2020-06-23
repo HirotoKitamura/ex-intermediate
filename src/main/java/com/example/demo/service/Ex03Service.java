@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.constant.Colors;
 import com.example.demo.domain.Cloth;
 import com.example.demo.repository.Ex03Repository;
 
@@ -28,8 +29,8 @@ public class Ex03Service {
 	 * @param gender 性別 男性が0で女性が1
 	 * @return 検索結果のリスト
 	 */
-	public List<Cloth> searchByColorAndGender(String color, Integer gender) {
-		List<Cloth> clothList = repository.findByColorAndGender(color, gender);
+	public List<Cloth> searchByColorAndGender(Colors color, Integer gender) {
+		List<Cloth> clothList = repository.findByColorAndGender(color.getName(), gender);
 		return clothList;
 	}
 }

@@ -48,22 +48,20 @@ public class Ex02Controller {
 	 */
 	@RequestMapping("result")
 	public String result(PriceForm priceForm, Model model) {
+		String price = priceForm.getPrice();
 		try {
-			int intPrice = Integer.parseInt(priceForm.getPrice());
-			List<Hotel> hotelList = service.searchByLessThanPrice(intPrice);
-			if (hotelList.size() == 0) {
-				model.addAttribute("errors", "検索結果が1件もありません");
-			} else {
-				model.addAttribute("hotelList", hotelList);
-			}
+			Integer.parseInt(priceForm.getPrice());
 		} catch (Exception e) {
-			if ("".equals(priceForm.getPrice())) {
-				model.addAttribute("hotelList", service.showAll());
-			} else {
+			if (!"".equals(priceForm.getPrice())) {
 				model.addAttribute("errors", "入力が不正です");
+				return "ex02";
 			}
 		}
-
+		List<Hotel> hotelList = service.searchByLessThanPrice(price);
+		if (hotelList.size() == 0) {
+			model.addAttribute("errors", "検索結果が1件もありません");
+		}
+		model.addAttribute("hotelList", hotelList);
 		return "ex02";
 	}
 }

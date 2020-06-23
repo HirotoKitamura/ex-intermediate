@@ -2,14 +2,30 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="/css/xxx.css">
+<title>ホテル検索</title>
+<link rel="stylesheet" href="/css/ex.css" th:href="@{/css/ex.css}">
 </head>
 <body>
 <h1>ホテル検索</h1>
-<form th:action="@{/ex02/result}" method="post">
-<input type="number" name="price">円以下<br>
+<form th:action="@{/ex02/result}" method="post" th:object="${priceForm}">
+<input type="number" name="price" th:field="*{price}">円以下<br>
 <button>検索</button>
 </form>
+<strong th:text="${errors}" style="color: red;"></strong>
+<table th:each="hotel:${hotelList}">
+<tr class="odd">
+<td class="item">ホテル名</td>
+<td class="value" th:text=${hotel.hotelName}></td>
+</tr>
+<tr class="even">
+<td class="item">最寄駅</td>
+<td class="value" th:text=${hotel.nearestStation}></td>
+</tr>
+<tr class="odd">
+<td class="item">価格</td>
+<td class="value" th:text="${#numbers.formatInteger(hotel.price,0,'COMMA')}"></td>
+</tr>
+
+</table>
 </body>
 </html>

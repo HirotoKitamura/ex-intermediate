@@ -29,3 +29,11 @@ tr.odd {
 tr.even {
 	background-color: orange;
 }
+
+#gender, select{
+	float: left;
+}
+
+#button{
+	clear: both;
+}

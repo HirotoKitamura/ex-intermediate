@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,10 @@ import com.example.demo.service.Ex03Service;
 /**
  * 課題3のコントローラークラス.
  * 
+ * @author hiroto.kitamura
+ *
+ */
+/**
  * @author hiroto.kitamura
  *
  */
@@ -36,8 +42,19 @@ public class Ex03Controller {
 		return "ex03";
 	}
 
+	/**
+	 * 検索結果を表示.
+	 * 
+	 * @param model     リクエストスコープ
+	 * @param clothForm フォームから受け取った情報
+	 * @return 検索画面
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping("result")
 	public String result(Model model, ClothForm clothForm) {
-		return null;
+		Map map = service.searchByColorAndGender(clothForm.getColor(), clothForm.getGender());
+		model.addAllAttributes(map);
+		model.addAttribute("gender", clothForm.getGender());
+		return "ex03";
 	}
 }

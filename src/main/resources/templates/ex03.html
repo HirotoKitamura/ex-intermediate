@@ -7,18 +7,35 @@
 </head>
 <body>
 <h1>衣類検索</h1>
-<form th:action="@{/ex03/result}">
+<form th:action="@{/ex03/result}" th:object="${clothForm}" method="post">
+<div id="form">
 <div id="gender">
-<input id="man" type="radio" name="gender" value="0" checked><label for="man">Man</label><br>
-<input id="woman" type="radio" name="gender" value="1"><label for="woman">Woman</label><br>
+<input id="man" type="radio" name="gender" value="0" th:checked="${gender==0 || gender==null}"><label for="man">Man</label><br>
+<input id="woman" type="radio" name="gender" value="1" th:checked="${gender==1}"><label for="woman">Woman</label><br>
 </div>
-<select name="color">
-<option value="赤">赤
-<option value="青">青
-<option value="白">白
-<option value="黄">黄
+<select name="color" th:field="*{color}">
+<option value="赤">赤</option>
+<option value="青">青</option>
+<option value="白">白</option>
+<option value="黄">黄</option>
 </select><br>
+</div>
 <button id="button">検索</button>
 </form>
+<div class="end" th:text="${errors}" style="color: red;"></div>
+<table class="end" th:each="cloth:${clothList}">
+<tr class="odd">
+<td class="item cloth">ジャンル</td>
+<td class="value cloth" th:text=${cloth.genre}></td>
+</tr>
+<tr class="even cloth">
+<td class="item cloth">サイズ</td>
+<td class="value cloth" th:text=${cloth.size}></td>
+</tr>
+<tr class="odd">
+<td class="item cloth">価格</td>
+<td class="value cloth" th:text="${#numbers.formatInteger(cloth.price,0,'COMMA')}"></td>
+</tr>
+</table>
 </body>
 </html>

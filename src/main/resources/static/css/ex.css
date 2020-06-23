@@ -22,6 +22,10 @@ td.value {
 	width: 15em;
 }
 
+td.cloth {
+	text-align: left;
+}
+
 tr.odd {
 	background-color: yellow;
 }
@@ -30,10 +34,23 @@ tr.even {
 	background-color: orange;
 }
 
-#gender, select{
+#gender, select {
 	float: left;
 }
 
-#button{
+select{
+	margin-left: 15px;
+}
+
+#button {
 	clear: both;
+	float: left;
+}
+
+.end{
+	clear: both;
+}
+
+div.end{
+	font-weight: bold;
 }
